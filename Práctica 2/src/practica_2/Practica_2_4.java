@@ -7,7 +7,7 @@ public class Practica_2_4 {
 		int [][] arrayB = new int [3][3];
 		int i, j, num, suma = 0;
 		
-		Scanner leer = new Scanner(System.in);
+		try (Scanner leer = new Scanner(System.in)){
 		for (i=0; i<arrayA.length; i++) {
 			for (j=0; j<arrayA[1].length; j++) {
 				System.out.println("Introduzca un número de la primera matriz.");
@@ -29,4 +29,5 @@ public class Practica_2_4 {
 		}
 		System.out.println("La suma de las dos matrices es "+ suma);
 	}
+}
 }

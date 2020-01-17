@@ -108,7 +108,89 @@ public class Main {
 				total_ventas =+ importe;
 			}
 			System.out.println("El importe total de las ventas es " + total_ventas);
+			break;
+		case 14:
+			System.out.println("Introduzca a: ");
+			int a = leer.nextInt();
+			System.out.println("Introduzca b: ");
+			int b = leer.nextInt();
+			System.out.println("Introduzca c: ");
+			int c = leer.nextInt();
+			double determinante = Math.pow(b, 2) - (4*a*c);
+			
+			if (determinante>=0) {
+				double x1 = ((b*-1)+Math.sqrt(determinante))/ (2*a);
+				double x2 = ((b*-1)-Math.sqrt(determinante))/ (2*a);
+				System.out.println("X puede valer "+ x1 +" o "+ x2);
+			} else {
+				System.out.println("La ecuación no tiene solución porque el determinante es negativo.");
+			}
+			break;
+		case 15:
+			System.out.println("Introduzca un número mayor o igual que cero: ");
+			int num15;
+			do {
+				System.out.println("Introduzca un número mayor o igual que cero: ");
+				num15 = leer.nextInt();
+			} while (num15 < 0);
+			System.out.println(num15 + " es mayor o igual que 0");
+			break;
+		case 16:
+			System.out.println("Escriba una contraseña: ");
+			String contraseña = leer.nextLine();
+			int intentos = 0;
+			boolean contraseña_correcta = false;
+			while (contraseña_correcta = false && intentos<3) {
+				System.out.println("Escriba la contraseña");
+				String respuesta = leer.nextLine();
+				if (respuesta == contraseña) {
+					contraseña_correcta = true;
+				} else {
+					intentos ++;
+				}
+			}
+			if (contraseña_correcta == true){
+				System.out.println("¡Contraseña correcta!");
+			} else if (intentos == 3) {
+				System.out.println("ERROR: Lo has intentado demasiadas veces.");
+			}
+			break;
+		case 17:
+			System.out.println("Introduzca un día de la semana: ");
+			String opcion17 = leer.nextLine();
+			switch (opcion17) {
+			case "lunes":
+				System.out.println("Es laborable.");
+				break;
+			case "martes":
+				System.out.println("Es laborable.");
+				break;
+			case "miércoles":
+				System.out.println("Es laborable.");
+				break;
+			case "jueves":
+				System.out.println("Es laborable.");
+				break;
+			case "viernes":
+				System.out.println("Es laborable.");
+				break;
+			case "sábado":
+				System.out.println("No es laborable.");
+				break;
+			case "domingo":
+				System.out.println("No es laborable.");
+				break;
+			}
+			break;
+		case 18:
+			System.out.println("Introduzca un número.");
+			int num18a = leer.nextInt();
+			System.out.println("Introduzca otro número.");
+			int num18b = leer.nextInt();
+			for (int i = 0; i<10; i++) {
+				int num18random = (int)Math.floor(Math.random()*(num18a-num18b)+num18b);
+				System.out.println(num18random);
+			}
 		}
-
 }
 }

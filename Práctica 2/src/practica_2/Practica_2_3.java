@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Practica_2_3 {
 	public void crearArray4x4() {
-		Scanner leer = new Scanner(System.in);
+		try (Scanner leer = new Scanner(System.in)){
 		int [][] array4x4 = new int [4][4];
 		int i, j, num;
 		boolean validar = true;
@@ -28,4 +28,5 @@ public class Practica_2_3 {
 			System.out.println("Las tablas no son simétricas.");
 		}
 	}
+}
 }
