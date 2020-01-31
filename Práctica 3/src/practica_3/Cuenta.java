@@ -1,4 +1,5 @@
 package practica_3;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Cuenta {
@@ -6,6 +7,7 @@ public class Cuenta {
 	private String numCuenta;
 	private double tipoInt;
 	private double saldo;
+	private int pin;
 	
 	static Scanner lector = new Scanner(System.in);
 	
@@ -18,12 +20,14 @@ public class Cuenta {
 		this.setNumCuenta(numCuenta);
 		this.setTipoInt(tipoInt);
 		this.setSaldo(saldo);
+		this.setPin(pin);
 	}
 	public Cuenta(Cuenta c1) {
 		this.setNombre(c1.nombre);
 		this.setNumCuenta(c1.numCuenta);
 		this.setTipoInt(c1.tipoInt);
 		this.setSaldo(c1.saldo);
+		this.setPin(c1.pin);
 	}
 	
 	//Getters y Setters
@@ -51,46 +55,84 @@ public class Cuenta {
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
+	public double getPin() {
+		return pin;
+	}
+	public void setPin(int pin) {
+		this.pin = pin;
+	}
 	
 	//Métodos de la clase
 	public void crearCuenta() {
 		System.out.println("Introduzca el nombre: ");
 		this.nombre = lector.nextLine();
 		System.out.println("Introduzca el número de la cuenta: ");
-		this.numCuenta= lector.nextLine();
+		this.numCuenta = lector.nextLine();
 		System.out.println("Introduzca el tipo de interés: ");
-		this.tipoInt=Double.parseDouble(lector.nextLine());
+		this.tipoInt = Double.parseDouble(lector.nextLine());
 		System.out.println("Introduzca el saldo");
 		this.saldo = Double.parseDouble(lector.nextLine());
+		System.out.println("Introduzca el PIN: ");
+		this.pin = Integer.parseInt(lector.nextLine());
 	}
+	
 	public boolean ingresarDinero() {
+		boolean comprobacion = false;
 		System.out.println("Introduzca la cantidad que desea ingresar: ");
-		int ingreso = Integer.parseInt(lector.nextLine());
+		double ingreso = Double.parseDouble(lector.nextLine());
 		if (ingreso > 0) {
-			this.saldo += ingreso;
+			this.setSaldo(saldo + ingreso);
 			System.out.println("El saldo actual es de "+this.saldo);
-			return true;
+			comprobacion = true;
+			return comprobacion;
 		}
-		else return false;
+		else {
+			System.out.println("No se puede ingresar aquello que no se posee");
+			return comprobacion;
+		}
 	}
+	
 	public boolean retirarDinero() {
+		boolean comprobacion = false;
 		System.out.println("Introduzca la cantidad que desea retirar: ");
-		int retiro = Integer.parseInt(lector.nextLine());
+		double retiro = Double.parseDouble(lector.nextLine());
 			if (retiro > this.saldo) {
-				return false;
+				System.out.println("De aquello que ya está vacío, no se puede obtener nada");
+				return comprobacion;
 			}
 			else {
-				this.saldo -= retiro;
+				this.setSaldo(saldo - retiro);
 				System.out.println("El saldo actual es de "+this.saldo);
-				return true;
+				comprobacion = true;
+				return comprobacion;
 			}
 	}
-	public void transferirDinero() {
-		
+	
+	public void transferirDinero(ArrayList <Cuenta> Banco, String cuentaDestino, double importe, int comprobacion) {
+		int j = 0;
+		while (j>Banco.size()) {
+			if (cuentaDestino == Banco.get(j).getNumCuenta() && importe < Banco.get(comprobacion).getSaldo()) {
+				Banco.get(j).setSaldo(saldo + importe);
+				Banco.get(comprobacion).setSaldo(saldo - importe);
+			}
+		}
 	}
 	
-	 
-	
-
-	
+	public int iniciarSesion (ArrayList <Cuenta> Banco, String numCuenta, int pin) {
+		int i = 0;
+		boolean inicio = false;
+		while (i< Banco.size()) {
+			if (numCuenta == Banco.get(i).getNumCuenta() && pin == Banco.get(i).getPin()) {
+				inicio = true;
+				if (inicio == true) {
+					System.out.println("Inicio de sesión correcto");
+					return i;
+				}
+				else {
+					i++;
+				}
+			}
+		}
+		return -1;
+	}
 }
