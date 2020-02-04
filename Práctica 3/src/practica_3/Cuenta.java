@@ -112,8 +112,8 @@ public class Cuenta {
 		int j = 0;
 		while (j>Banco.size()) {
 			if (cuentaDestino == Banco.get(j).getNumCuenta() && importe < Banco.get(comprobacion).getSaldo()) {
-				Banco.get(j).setSaldo(saldo + importe);
-				Banco.get(comprobacion).setSaldo(saldo - importe);
+				Banco.get(j).setSaldo(Banco.get(j).getSaldo() + importe);
+				Banco.get(comprobacion).setSaldo(Banco.get(comprobacion).getSaldo() - importe);
 			}
 		}
 	}
