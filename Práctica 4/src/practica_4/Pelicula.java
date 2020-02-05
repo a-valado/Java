@@ -1,4 +1,5 @@
 package practica_4;
+import java.util.Scanner;
 
 public class Pelicula {
 	private int ID;
@@ -9,6 +10,12 @@ public class Pelicula {
 	private boolean disponible;
 	private int total_copias;
 	private int reservadas;
+	
+	Scanner lector = new Scanner(System.in);
+	
+	public Pelicula() {
+		
+	}
 	
 	public Pelicula(int iD, String titulo, String director, int año, String genero, boolean disponible,
 			int total_copias, int reservadas) {
@@ -27,7 +34,7 @@ public class Pelicula {
 	}
 
 	public void setID(int iD) {
-		ID = iD;
+		ID = iD+1;
 	}
 
 	public String getTitulo() {
@@ -85,14 +92,4 @@ public class Pelicula {
 	public void setReservadas(int reservadas) {
 		this.reservadas = reservadas;
 	}
-
-	//MÉTODOS DE LA CLASE
-	public void añadirPelicula() {
-		
 	}
-	
-	
-	
-	
-	
-}
