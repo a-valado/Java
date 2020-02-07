@@ -2,10 +2,10 @@ package practica_4;
 import java.util.Scanner;
 
 public class Pelicula {
-	private int ID;
+	private Integer ID;
 	private String titulo;
 	private String director;
-	private int año;
+	private Integer año;
 	private String genero;
 	private boolean disponible;
 	private int total_copias;
@@ -17,7 +17,7 @@ public class Pelicula {
 		
 	}
 	
-	public Pelicula(int iD, String titulo, String director, int año, String genero, boolean disponible,
+	public Pelicula(int iD, String titulo, String director, Integer año, String genero, boolean disponible,
 			int total_copias, int reservadas) {
 		this.ID = iD;
 		this.setTitulo(titulo);
@@ -29,11 +29,11 @@ public class Pelicula {
 		this.reservadas = reservadas;
 	}
 
-	public int getID() {
+	public Integer getID() {
 		return ID;
 	}
 
-	public void setID(int iD) {
+	public void setID(Integer iD) {
 		ID = iD+1;
 	}
 
@@ -42,7 +42,7 @@ public class Pelicula {
 	}
 
 	public void setTitulo(String titulo) {
-		this.titulo = titulo.toUpperCase();
+		this.titulo = titulo.substring(0,1).toUpperCase()+titulo.substring(1);
 	}
 
 	public String getDirector() {
@@ -50,14 +50,14 @@ public class Pelicula {
 	}
 
 	public void setDirector(String director) {
-		this.director = director.toUpperCase();
+		this.director = director.substring(0,1).toUpperCase()+director.substring(1);
 	}
 
-	public int getAño() {
+	public Integer getAño() {
 		return año;
 	}
 
-	public void setAño(int año) {
+	public void setAño(Integer año) {
 		this.año = año;
 	}
 
@@ -66,7 +66,7 @@ public class Pelicula {
 	}
 
 	public void setGenero(String genero) {
-		this.genero = genero;
+		this.genero = genero.substring(0,1).toUpperCase()+genero.substring(1);
 	}
 
 	public boolean isDisponible() {
