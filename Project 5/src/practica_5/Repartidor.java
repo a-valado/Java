@@ -2,7 +2,7 @@ package practica_5;
 //Import
 import java.util.Scanner;
 
-public class Repartidor extends Empleado {
+final public class Repartidor extends Empleado {
 //Atributos
 	private int horas;
 	private String zona;

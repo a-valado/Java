@@ -2,7 +2,7 @@ package practica_5;
 //Import
 import java.util.Scanner;
 
-public class Comercial extends Empleado {
+final public class Comercial extends Empleado {
 //Atributos
 	private int ventas;
 	private int comision;
