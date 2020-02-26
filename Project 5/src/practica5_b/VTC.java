@@ -32,6 +32,11 @@ public class VTC extends Vehiculo{
 	}
 
 	public void setMax_horas(int max_horas) {
+		while (max_horas > 24) {
+			System.out.println("El máximo número de horas es 24");
+			max_horas=input.nextInt();  //Línea vacía para que la anterior no se quede pillada con el retorno de carro.
+			input.nextLine();
+		}
 		this.max_horas = max_horas;
 	}
 
@@ -40,6 +45,11 @@ public class VTC extends Vehiculo{
 	}
 
 	public void setRadio_accion(int radio_accion) {
+		while (radio_accion > 50) {
+			System.out.println("El radio máximo de acción son 50 km");
+			radio_accion= input.nextInt();
+			input.nextLine();
+		}
 		this.radio_accion = radio_accion;
 	}
 

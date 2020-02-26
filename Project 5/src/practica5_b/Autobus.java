@@ -35,9 +35,20 @@ public class Autobus extends Vehiculo {
 	}
 
 	public void setNum_paradas(int num_paradas) {
+		while (num_paradas < 3 && num_paradas > 20) {
+			if (num_paradas < 3) {
+				System.out.println("El número mínimo de paradas es 3");
+				num_paradas = input.nextInt();
+				input.nextLine();  //Línea vacía para que la anterior no se quede pillada con el retorno de carro.
+			}
+			else {
+				System.out.println("El número máximo de paradas es 20");
+				num_paradas = input.nextInt();
+				input.nextLine();
+			}
+		}
 		this.num_paradas = num_paradas;
 	}
-	
 	
 	@Override
 	public void mostrarAtributos() {
